@@ -1,0 +1,39 @@
+---
+apiVersion: networking.istio.io/v1alpha1
+kind: EgressRule
+metadata:
+  name: kinesis-api-endpoint
+spec:
+  destination:
+    service: kinesis.us-west-2.amazonaws.com
+  ports:
+  - port: 443
+    protocol: HTTPS
+  - port: 80
+    protocol: HTTP
+---
+apiVersion: networking.istio.io/v1alpha1
+kind: EgressRule
+metadata:
+  name: kinesis-eu-west-1-api-endpoint
+spec:
+  destination:
+    service: kinesis.eu-west-1.amazonaws.com
+  ports:
+  - port: 443
+    protocol: HTTPS
+  - port: 80
+    protocol: HTTP
+---
+apiVersion: networking.istio.io/v1alpha1
+kind: EgressRule
+metadata:
+  name: google-egress
+spec:
+  destination:
+    service: www.google.com
+  ports:
+  - port: 443
+    protocol: HTTPS
+  - port: 80
+    protocol: HTTPS
